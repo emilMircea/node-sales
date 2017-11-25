@@ -8,14 +8,14 @@ const csvFilePath = path.resolve(__dirname + '/../uploads/Bestellingen.csv')
 module.exports = {
   index: (req, res) => {
     const _res = res;
-    let x
+    let x = []
 
     csv({delimiter: "auto"})
       .fromFile(csvFilePath)
       .on('json',(jsonObj) => {
          // combine csv header row and csv line to a json object
-         console.log(jsonObj);
-         x = jsonObj
+         console.log(jsonObj)
+         x.push(jsonObj)
       })
       .on('done',(error) => {
          console.log('end')
